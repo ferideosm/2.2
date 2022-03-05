@@ -21,24 +21,12 @@ def show_catalog(request):
 
     phones = [p for p in phones]
     context = {'phones': phones}
-    
+
     return render(request, template, context)
 
 
 def show_product(request, slug):
     template = 'product.html'
     phone = Phone.objects.get(slug=slug)
-    context = {'phone': phone}
-    return render(request, template, context)
-
-
-def sort(request):
-    template = 'catalog.html'
-    sort = request.GET('sort')
-    print('sort==', sort)
-    if sort == 'name':
-        phone = Phone.objects.all( ).order_by('name')
-    else:
-        phone = None
     context = {'phone': phone}
     return render(request, template, context)
