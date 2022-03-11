@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Article, ArticleScope, Tag
+from .models import Article, Tag , ArticleScope
 from django.forms import BaseInlineFormSet
 from django.core.exceptions import ValidationError
 
@@ -32,6 +32,10 @@ class ArticleScopeInline(admin.TabularInline):
     extra = 0
     formset = ArticleScopeInlineFormset
 
+# class ScopeInline(admin.TabularInline):
+#     model = Scope
+#     extra = 0
+#     formset = ArticleScopeInlineFormset
 
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
