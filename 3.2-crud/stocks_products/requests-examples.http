@@ -14,7 +14,7 @@ Content-Type: application/json
 ###
 
 # получение продуктов
-GET {{baseUrl}}/products/
+GET {{baseUrl}}/products/?limit=1
 Content-Type: application/json
 
 ###
@@ -24,7 +24,7 @@ PATCH {{baseUrl}}/products/1/
 Content-Type: application/json
 
 {
-  "title": "Огурцы",
+  "title": "cucember",
   "description": "Самые сочные и ароматные огурцы"
 }
 
@@ -37,7 +37,7 @@ Content-Type: application/json
 ###
 
 # поиск продуктов по названию и описанию
-GET {{baseUrl}}/products/?search=помидор
+GET {{baseUrl}}/products/?search=самые
 Content-Type: application/json
 
 ###
@@ -47,7 +47,7 @@ POST {{baseUrl}}/stocks/
 Content-Type: application/json
 
 {
-  "address": "ADDRESS ADDRESS",
+  "address": "NEW ADDRESS",
   "positions": [
     {
       "product": 2,
@@ -86,10 +86,10 @@ Content-Type: application/json
 ###
 
 # поиск складов, где есть определенный продукт
-GET {{baseUrl}}/stocks/?products=2
+GET {{baseUrl}}/stocks/?product_name=cucem&limit=2
 Content-Type: application/json
 
 #####
 # ALL STOCKS
-GET {{baseUrl}}/stocks/
+GET {{baseUrl}}/stocks/?limit=2
 Content-Type: application/json
