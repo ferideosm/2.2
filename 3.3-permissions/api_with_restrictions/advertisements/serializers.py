@@ -24,6 +24,7 @@ class AdvertisementSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         validated_data["creator"] = self.context["request"].user
+        self.validate(self, validated_data)
         return super().create(validated_data)
 
     def validate(self, data):
