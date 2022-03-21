@@ -5,13 +5,19 @@
 # получение объявлений
 GET {{baseUrl}}/advertisements/
 Content-Type: application/json
-Authorization: Token 6c8620899e0615be1ea24d1048cbc93f1513b8ee
+Authorization: Token af5271a01b85647f3b5d9d21b2cee052d4422c20
 
 ###
-
+# просмотр избранных
 GET {{baseUrl}}/advertisements/favorites
 Content-Type: application/json
 Authorization: Token 6c8620899e0615be1ea24d1048cbc93f1513b8ee
+
+###
+# просмотр избранных
+POST {{baseUrl}}/advertisements/4/add_to_favorites/
+Content-Type: application/json
+Authorization: Token af5271a01b85647f3b5d9d21b2cee052d4422c20
 
 ###
 # создание объявления
@@ -27,7 +33,7 @@ Authorization: Token af5271a01b85647f3b5d9d21b2cee052d4422c20
 ###
 
 # попытка поменять объявление
-PATCH {{baseUrl}}/advertisements/4/
+PATCH {{baseUrl}}/advertisements/1/
 Content-Type: application/json
 Authorization: Token 6c8620899e0615be1ea24d1048cbc93f1513b8ee
 

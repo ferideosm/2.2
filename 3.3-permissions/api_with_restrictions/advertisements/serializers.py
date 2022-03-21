@@ -27,7 +27,8 @@ class AdvertisementSerializer(serializers.ModelSerializer):
         return super().create(validated_data)
 
     def validate(self, data):
-        count = Advertisement.objects.filter(status=AdvertisementStatusChoices.OPEN).count()
+        count = Advertisement.objects.filter(creator=self.context["request"].user,
+                                            status=AdvertisementStatusChoices.OPEN).count()
         if count > 10:
             raise ValidationError({'error': 'You have more then 10 advertisement'})
 
