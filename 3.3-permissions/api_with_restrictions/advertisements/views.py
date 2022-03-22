@@ -24,7 +24,7 @@ class AdvertisementViewSet(ModelViewSet):
     # permission_classes = [IsAuthenticated, IsOwnerOrReadOnlyOrAdmin]
 
     def get_permissions(self):
-        if self.action in ["create", "update", "partial_update"]:
+        if self.action in ["update", "partial_update", "delete"] :
             return [IsAdminOrIsSelf()]
         elif self.action == 'add_to_favorites':     
             return [AddToFavorite()] 
