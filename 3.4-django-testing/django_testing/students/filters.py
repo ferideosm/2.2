@@ -14,3 +14,4 @@ class CourseFilter(filters.FilterSet):
     class Meta:
         model = Course
         fields = ("id", "name", )
+

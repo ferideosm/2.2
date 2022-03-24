@@ -1,0 +1,48 @@
+# примеры API-запросов
+
+@baseUrl = http://localhost:8000/api/v1
+
+# получение объявлений
+GET {{baseUrl}}/courses/
+
+
+###
+# просмотр избранных
+GET {{baseUrl}}/courses/?name=2
+###
+
+###
+# просмотр избранных
+GET {{baseUrl}}/courses/?id=1
+###
+
+###
+POST {{baseUrl}}/courses/
+Content-Type: application/json
+
+{
+  "name": "110",
+}
+
+###
+POST {{baseUrl}}/courses/
+Content-Type: application/json
+
+{
+  "name": "110",
+  "students": [{
+    "id": 1,
+    "name": "petrov"
+  }]
+}
+###
+
+PATCH {{baseUrl}}/courses/4/
+Content-Type: application/json
+
+{
+  "name": "100"
+}
+
+###
+DELETE {{baseUrl}}/courses/4/
