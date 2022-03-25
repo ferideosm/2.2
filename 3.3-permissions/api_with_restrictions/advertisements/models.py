@@ -27,9 +27,10 @@ class Advertisement(models.Model):
         auto_now=True
     )
     user = models.ManyToManyField(settings.AUTH_USER_MODEL, through='Favorite', related_name='favorite', blank=True, null=True)
+    
     def __str__(self) -> str:
         return f"{self.id} -- {self.title}"
-
+    
 class Favorite(models.Model):  
     advertisement = models.ForeignKey(Advertisement, on_delete=models.CASCADE, related_name='favorite_adv')
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name = 'favorite_adv')

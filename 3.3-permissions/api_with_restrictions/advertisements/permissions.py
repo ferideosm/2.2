@@ -23,4 +23,6 @@ class IsAdminOrIsSelf(permissions.BasePermission):
 class AddToFavorite(permissions.BasePermission):
 
     def has_object_permission(self, request, view, obj):
+        print('request.user==', request.user)
+        print('obj.creator==', obj.creator)
         return request.user != obj.creator

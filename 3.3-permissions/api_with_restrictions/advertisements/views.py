@@ -24,12 +24,18 @@ class AdvertisementViewSet(ModelViewSet):
     # permission_classes = [IsAuthenticated, IsOwnerOrReadOnlyOrAdmin]
 
     def get_permissions(self):
-        if self.action in ["update", "partial_update", "delete"] :
+
+        if self.action in ["update", "partial_update", "destroy"] :
             return [IsAdminOrIsSelf()]
-        elif self.action == 'add_to_favorites':     
-            return [AddToFavorite()] 
-        else:
+
+        elif self.action in ["create"]:  
             return [IsAuthenticated()]
+
+        elif self.action in ["add_to_favorites", "favorites"]:   
+            return [IsAuthenticated(), AddToFavorite()] 
+            
+        else:
+            return []
 
     @action(methods=['GET'], detail=False)
     def favorites(self, request):

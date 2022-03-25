@@ -5,17 +5,16 @@
 # получение объявлений
 GET {{baseUrl}}/advertisements/
 Content-Type: application/json
-Authorization: Token af5271a01b85647f3b5d9d21b2cee052d4422c20
 
 ###
 # просмотр избранных
 GET {{baseUrl}}/advertisements/favorites
 Content-Type: application/json
-Authorization: Token 6c8620899e0615be1ea24d1048cbc93f1513b8ee
+Authorization: Token af5271a01b85647f3b5d9d21b2cee052d4422c20
 
 ###
 # просмотр избранных
-POST {{baseUrl}}/advertisements/4/add_to_favorites/
+POST {{baseUrl}}/advertisements/2/add_to_favorites/
 Content-Type: application/json
 Authorization: Token af5271a01b85647f3b5d9d21b2cee052d4422c20
 
@@ -35,21 +34,19 @@ Authorization: Token af5271a01b85647f3b5d9d21b2cee052d4422c20
 # попытка поменять объявление
 PATCH {{baseUrl}}/advertisements/1/
 Content-Type: application/json
-Authorization: Token 6c8620899e0615be1ea24d1048cbc93f1513b8ee
+Authorization: Token af5271a01b85647f3b5d9d21b2cee052d4422c20
 
 {
-  "status": "CLOSED"
+  "status": "OPEN"
 }
 #####
 
 # фильтрация по создателю
 GET {{baseUrl}}/advertisements/?creator=2
 Content-Type: application/json
-Authorization: Token 6c8620899e0615be1ea24d1048cbc93f1513b8ee
 
 ###
 
 # фильтрация по дате
 GET {{baseUrl}}/advertisements/?created_at_before=2020-10-01
 Content-Type: application/json
-Authorization: Token 6c8620899e0615be1ea24d1048cbc93f1513b8ee
