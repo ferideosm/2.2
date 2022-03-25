@@ -26,8 +26,8 @@ def sourse_factory():
 # 1 проверка получения 1го курса (retrieve-логика)
 @pytest.mark.django_db
 def test_retrieve_courses(client, sourse_factory):
-    sourses = sourse_factory(_quantity=10)
-    response = client.get('/courses/1/')   
+    sourses = sourse_factory(id=1)
+    response = client.get(f'/courses/{sourses.id}/')   
     assert response.status_code == 200
 
 # 2 проверка получения списка курсов (list-логика)
@@ -64,21 +64,28 @@ def test_create_new_courses(client):
     response = client.post('/courses/', data=data) 
     assert response.status_code == 201
 
-# # 5a тест успешного создания курса со студентом НЕ ПОЛУЧАЕТСЯ!
-# @pytest.mark.django_db
-# def test_create_new_course_with_student(client, student_factory):
-#     student = student_factory(name='Petrov')
-#     data  = {
-#                 "name": "11",
-#                 'students': [{
-#                     "id": student.id,
-#                     "name": student.name,
-#                     "birth_date": student.birth_date
-#                 }]
-#             }
-#     response = client.post('/courses/', data=data) 
-#     print('response.json() ==', response.json())
-#     assert response.status_code == 2010
+# 5a тест успешного создания курса со студентом
+@pytest.mark.django_db
+def test_create_new_course_with_student(client, student_factory):
+
+    student = student_factory(id=1)
+
+    data  = {
+        "name": "3",
+        "students":[
+            {
+            "id": student.pk,
+            "name": student.name
+            }
+        ]
+    }
+
+    response = client.post('/courses/', data=data, format='json') 
+    assert response.status_code == 201
+    data = response.json()
+    for data_student in data['students']:
+        print('student ==', data_student)
+        assert data_student['name'] == student.name
 
 # 6 тест успешного обновления курса
 @pytest.mark.django_db
@@ -94,7 +101,7 @@ def test_update_courses(client, sourse_factory):
 @pytest.mark.django_db
 def test_delete_course(client, sourse_factory):
     sourse_factory = sourse_factory()
-    response = client.patch(f'/courses/{sourse_factory.id}/') 
-    assert response.status_code == 200 # почему приходит код 200, а не 204?     
+    response = client.delete(f'/courses/{sourse_factory.id}/') 
+    assert response.status_code == 204   
         
         

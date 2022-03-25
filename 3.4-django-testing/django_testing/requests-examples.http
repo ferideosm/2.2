@@ -21,7 +21,13 @@ POST {{baseUrl}}/courses/
 Content-Type: application/json
 
 {
-  "name": "110",
+  "name": "3",
+  "students":[
+    {
+      "id": 1,
+      "name": "student 1"
+    }
+  ]
 }
 
 ###
@@ -31,7 +37,7 @@ Content-Type: application/json
 {
   "name": "110",
   "students": [{
-    "id": 1,
+    "id": 5,
     "name": "petrov"
   }]
 }

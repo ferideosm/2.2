@@ -4,7 +4,7 @@ from students.models import Course
 
 
 class CourseFilter(filters.FilterSet):
-
+    print('CourseFilter')
     id = filters.ModelMultipleChoiceFilter(
         field_name="id",
         to_field_name="id",

@@ -1,3 +1,4 @@
+from pyexpat import model
 from django.db import models
 
 
@@ -18,5 +19,12 @@ class Course(models.Model):
 
     students = models.ManyToManyField(
         Student,
+        through="StudentCourse",
+        related_name='course',        
         blank=True,
     )
+
+class StudentCourse(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='student_course')
+    students = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='student_course')
+    
